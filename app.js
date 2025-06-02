@@ -1,12 +1,13 @@
-const express = require('express') // require -> commonJS
-const crypto = require('node:crypto')
-const cors = require('cors')
+import express, { json } from 'express' // require -> commonJS
+import { randomUUID } from 'node:crypto'
+import cors from 'cors'
 
-const movies = require('./movies.json')
-const { validateMovie, validatePartialMovie } = require('./schemas/movies')
+import movies from './movies.json' assert { type: 'json' } // importación de JSON
+import { validateMovie, validatePartialMovie } from './schemas/movies.js'
+import { assert } from 'node:console'
 
 const app = express()
-app.use(express.json())
+app.use(json())
 app.use(cors({
   origin: (origin, callback) => {
     const ACCEPTED_ORIGINS = [
@@ -64,7 +65,7 @@ app.post('/movies', (req, res) => {
 
   // en base de datos
   const newMovie = {
-    id: crypto.randomUUID(), // uuid v4
+    id: randomUUID(), // uuid v4
     ...result.data
   }
 
