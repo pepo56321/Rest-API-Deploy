@@ -1,5 +1,5 @@
 import express, { json } from 'express' 
-import { moviesrouter} from './routes/movies.js'
+import { moviesRouter} from './routes/movies.js'
 import { corsMiddelware } from './middlewares/cors.js'
 
 const app = express()
@@ -13,7 +13,7 @@ app.disable('x-powered-by')
 // OPTIONS
 
 // Todos los recursos que sean MOVIES se identifica con /movies
-app.use('/movies', moviesrouter)
+app.use('/movies', moviesRouter)
 
 const PORT = process.env.PORT ?? 1234
 

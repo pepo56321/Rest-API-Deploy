@@ -1,9 +1,9 @@
 import { Router } from "express"
-import movies from './movies.json' with { type: 'json' } // importación de JSON
-import { validateMovie, validatePartialMovie } from './schemas/movies.js'
+import movies from '../movies.json' with { type: 'json' } // importación de JSON
+import { validateMovie, validatePartialMovie } from '../schemas/movies.js'
 import { randomUUID } from 'node:crypto'
 
-export const moviesrouter = Router()
+export const moviesRouter = Router()
 
 moviesRouter.get('/', (req, res) => {
 
@@ -80,3 +80,4 @@ moviesRouter.patch('/:id', (req, res) => {
 
     return res.json(updateMovie)
 })
+
